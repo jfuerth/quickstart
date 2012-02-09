@@ -29,3 +29,5 @@ bin
 .nbattrs
 *.log
 .clover
+.gwt
+gwt-unitCache
