@@ -84,20 +84,31 @@ Then execute the command:
 Running the Application in JBoss Developer Studio or Eclipse with JBoss Tools
 =============================================================================
 
-We assume you already have the project in your workspace because it was created from
-the Maven archetype within your IDE.
+To run the project and try it out, you will need to perform a maven
+compilation before the first time you deploy, as some resources and
+classes can not be generated via the GWT/Eclipse compilers alone:
 
-To run the project and try it out, right-click on the project node in the Package
-Explorer and select Run As > Run On Server from the popup menu. Choose the newest
-available JBoss AS server in the dialog that appears.
+1. Right-click on the project the project node in the Package Explorer and select Run As > Maven Build...
+2. Set goals = package and click Run. GWT compilation might take a few minutes.
+3. Once the build is complete, Right-click on the on the project node in the Package Explorer and select Refresh.
+
+These steps will have to be repeated whenever you perform a clean build in Eclipse.
+
+Now that your project is ready to be deployed, right-click on the
+project node in the Package Explorer and select Run As > Run On Server
+from the popup menu. Choose the appropiate JBoss AS server in
+the dialog that appears.
 
 If you want to make changes to client-side code, we strongly recommend that you
 take advantage of GWT Dev Mode. Follow these steps:
 
 1. Deploy to JBoss AS (as in the above paragraph)
 2. Right-click the project in the Package Explorer
-3. From the popup menu, choose Run As > Web Application (running on external server)
-4. In the dialog that appears:
+3. From the popup menu, select Properties > Google > Web Toolkit
+4. Click Add... and add the KitchenSink module, then OK
+5. Right-click the project in the Package Explorer
+6. From the popup menu, choose Run As > Web Application (running on external server)
+7. In the dialog that appears:
    * Ensure External Server Root is set to http://localhost:8080/<your application name>
    * Ensure Select an HTML page is checked
    * Select KitchenSink.html from the Matching Items list
@@ -109,7 +120,7 @@ If you created the project using the Maven archetype wizard in your IDE
 (Eclipse, NetBeans or IntelliJ IDEA), then there is nothing to do. You should
 already have an IDE project.
 
-Detailed instructions for using Eclipse with JBoss AS 7 are provided in the 
+Detailed instructions for using Eclipse with JBoss AS 7 are provided in the
 JBoss AS 7 <a href="https://docs.jboss.org/author/display/AS71/Getting+Started+Developing+Applications+Guide" title="Getting Started Developing Applications Guide">Getting Started Developing Applications Guide</a>.
 
 If you created the project from the commandline using archetype:generate, then
