@@ -368,7 +368,7 @@
 
           <!-- Maven will append the version to the finalName (which is the name
             given to the generated war, and hence the context root) -->
-          <finalName>${project.artifactId}</finalName>
+          <warName>${project.artifactId}</warName>
 
           <!-- We must exclude GWT client local classes from the deployment, 
             or classpath scanners such as Hibernate and Weld get confused when the webapp 
@@ -398,7 +398,7 @@
             mode) to not start the default server (embedded jetty), but to download the 
             HTML host page from the configured runTarget. -->
           <noServer>true</noServer>
-          <runTarget>http://localhost:8080/jboss-as-kitchensink-errai/KitchenSink.html</runTarget>
+          <runTarget>http://localhost:8080/${project.artifactId}/KitchenSink.html</runTarget>
 
         </configuration>
         <executions>
@@ -423,6 +423,9 @@
         <groupId>org.jboss.as.plugins</groupId>
         <artifactId>jboss-as-maven-plugin</artifactId>
         <version>7.1.0.Final</version>
+        <configuration>
+          <filename>${project.artifactId}.${project.packaging}</filename>
+        </configuration>
       </plugin>
 
       <plugin>
